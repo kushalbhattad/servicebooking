@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Booking Platform</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="logo">BookService</h1>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+                <li><a href="#" class="nav-link" data-page="services">Services</a></li>
+                <li><a href="#" class="nav-link" data-page="bookings" id="bookingsLink" style="display:none;">My Bookings</a></li>
+                <li><a href="#" class="nav-link" id="authLink">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Home Page -->
+        <section id="home-page" class="page active">
+            <div class="hero">
+                <h2>Welcome to BookService</h2>
+                <p>Book professional services with ease</p>
+                <a href="#" class="btn btn-primary" onclick="goToPage('services')">Browse Services</a>
+            </div>
+        </section>
+
+        <!-- Services Page -->
+        <section id="services-page" class="page">
+            <h2>Available Services</h2>
+            <div id="servicesList" class="services-grid"></div>
+        </section>
+
+        <!-- Service Detail & Booking -->
+        <section id="booking-page" class="page">
+            <div class="booking-container">
+                <div id="serviceDetail" class="service-detail"></div>
+                <form id="bookingForm" class="booking-form">
+                    <h3>Book Service</h3>
+                    <div class="form-group">
+                        <label for="numberOfPeople">Number of People Required:</label>
+                        <input type="number" id="numberOfPeople" name="numberOfPeople" min="1" required>
+                        <p class="price-info">Price per person: <span id="pricePerPerson">$0</span></p>
+                        <p class="total-info">Total Amount: <span id="totalAmount">$0</span></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="bookingDate">Booking Date:</label>
+                        <input type="date" id="bookingDate" name="bookingDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bookingTime">Booking Time (Optional):</label>
+                        <input type="time" id="bookingTime" name="bookingTime">
+                    </div>
+                    <div class="form-group">
+                        <label for="notes">Notes (Optional):</label>
+                        <textarea id="notes" name="notes" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-success">Confirm Booking</button>
+                    <a href="#" class="btn btn-secondary" onclick="goToPage('services')">Back</a>
+                </form>
+            </div>
+        </section>
+
+        <!-- My Bookings Page -->
+        <section id="bookings-page" class="page">
+            <h2>My Bookings</h2>
+            <div id="myBookingsList" class="bookings-list"></div>
+        </section>
+
+        <!-- Auth Page -->
+        <section id="auth-page" class="page">
+            <div class="auth-container">
+                <div class="auth-tabs">
+                    <button class="tab-button active" data-tab="login">Login</button>
+                    <button class="tab-button" data-tab="register">Register</button>
+                </div>
+
+                <!-- Login Form -->
+                <form id="loginForm" class="auth-form active">
+                    <h3>Login</h3>
+                    <div class="form-group">
+                        <label for="loginEmail">Email:</label>
+                        <input type="email" id="loginEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password:</label>
+                        <input type="password" id="loginPassword" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+
+                <!-- Register Form -->
+                <form id="registerForm" class="auth-form">
+                    <h3>Register</h3>
+                    <div class="form-group">
+                        <label for="regName">Full Name:</label>
+                        <input type="text" id="regName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regEmail">Email:</label>
+                        <input type="email" id="regEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regPhone">Phone:</label>
+                        <input type="tel" id="regPhone">
+                    </div>
+                    <div class="form-group">
+                        <label for="regAddress">Address:</label>
+                        <textarea id="regAddress" rows="2"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="regCity">City:</label>
+                        <input type="text" id="regCity">
+                    </div>
+                    <div class="form-group">
+                        <label for="regPassword">Password:</label>
+                        <input type="password" id="regPassword" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <script src="api.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
